@@ -24,19 +24,27 @@ namespace Financeira
             switch (Idade())
             {
                 case <= 30:
-                    return CalcularPrestacao(Valor,Prazo) + 1;
+                    return base.CalcularPrestacao(Valor,Prazo) + 1;
                 case <= 40:
-                    return CalcularPrestacao(Valor, Prazo) + 2;
+                    return base.CalcularPrestacao(Valor, Prazo) + 2;
                 case <= 50:
-                    return CalcularPrestacao(Valor, Prazo) + 3;
+                    return base.CalcularPrestacao(Valor, Prazo) + 3;
                 default:
-                    return CalcularPrestacao(Valor, Prazo) + 4;
+                    return base.CalcularPrestacao(Valor, Prazo) + 4;
             }
         }
-        protected override void exibirInfo()
+        public override void ExibirInfo()
         {
-            exibirInfo();
-            Console.WriteLine($"O contratante tem {Idade} anos");
+            base.ExibirInfo();
+            Console.WriteLine($"O contratante tem {Idade()} anos");
+        }
+        public override void NovoContrato()
+        {
+            base.NovoContrato();
+            Console.WriteLine("Numero do CPF, por favor");
+            CPF = Console.ReadLine();
+            Console.WriteLine("Qual a data de nascimento do contratante?");
+            DataDeNascimento = DateTime.Parse(Console.ReadLine());
         }
     }
 }

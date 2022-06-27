@@ -10,13 +10,21 @@ namespace Financeira
     {
         private string CNPJ { get; set; }
         private string InscricaoEstadual { get; set; }
-        protected override decimal calcularPrestacao(decimal Valor, int Prazo)
+        protected override decimal CalcularPrestacao(decimal Valor, int Prazo)
         {
-            return calcularPrestacao(Valor, Prazo) + 3;
+            return base.CalcularPrestacao(Valor, Prazo) + 3;
         }
-        protected override void exibirInfo()
+        public override void ExibirInfo()
         {
-            exibirInfo();
+            base.ExibirInfo();
+        }
+        public override void NovoContrato()
+        {
+            base.NovoContrato();
+            Console.WriteLine("Numero do CNPJ, por favor");
+            CNPJ = Console.ReadLine();
+            Console.WriteLine("Numero da sua Inscrição Estadual, por favor");
+            InscricaoEstadual = Console.ReadLine();
         }
     }
 }
